@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        maven { url "https://artifactory.otxlab.net/artifactory/liaison-g2-releases" }
+        maven { url 'https://artifactory.otxlab.net/artifactory/repo1.maven.central/' }
+    }
+    apply from: file('gradle/buildscript.gradle'), to: buildscript
+    dependencies {
+        classpath "com.liaison:gradle-xunit-results-consolidator:1.+"
+        classpath 'org.owasp:dependency-check-gradle:3.3.1'
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'com.opentext.adf'
+version '0.1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.5.1'
+}
